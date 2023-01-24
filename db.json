@@ -3,6 +3,14 @@
     {
       "id": 1,
       "name": "Myra"
+    },
+    {
+      "name": "Ed Herzog",
+      "id": 2
+    },
+    {
+      "name": "Mercedes Tromp",
+      "id": 3
     }
   ],
   "albums": [],
