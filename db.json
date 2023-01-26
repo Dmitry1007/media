@@ -9,20 +9,28 @@
       "id": 2
     },
     {
-      "name": "Mercedes Tromp",
+      "name": "Marianne Schaefer MD",
       "id": 3
     },
     {
-      "name": "Shane Russel IV",
+      "name": "Bobbie Fritsch",
       "id": 4
     },
     {
-      "name": "Olive Botsford",
+      "name": "Lorene Prosacco",
       "id": 5
     },
     {
-      "name": "Ana Johnson",
+      "name": "Kathy Schoen",
       "id": 6
+    },
+    {
+      "name": "Dr. Harvey Toy",
+      "id": 7
+    },
+    {
+      "name": "Roosevelt Runolfsdottir",
+      "id": 8
     }
   ],
   "albums": [],
