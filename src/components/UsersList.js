@@ -1,17 +1,15 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { fetchUsers, addUser, removeUser } from "../store";
+import { fetchUsers, addUser } from "../store";
 import Button from "./Button";
 import Skeleton from "./Skeleton";
 import { useThunk } from "../hooks/use-thunk";
-import { GoTrashcan } from "react-icons/go";
+import UsersListItem from "./UsersListItem";
 
 function UsersList() {
   const [doFetchUsers, isLoadingUsers, loadingUsersError] =
     useThunk(fetchUsers);
   const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser);
-  const [doDeleteUser, isDeletingUser, deletingUserError] =
-    useThunk(removeUser);
 
   const { data } = useSelector((state) => {
     return state.users;
@@ -25,25 +23,8 @@ function UsersList() {
     doCreateUser();
   };
 
-  const handleUserRemove = (user) => {
-    doDeleteUser(user);
-  };
-
   const renderedUsers = data.map((user) => {
-    return (
-      <div key={user.id} className="mb-2 border rounded">
-        <div className="flex p-2 justify-between items-center cursor-pointer">
-          <Button
-            loading={isDeletingUser}
-            onClick={() => handleUserRemove(user)}
-          >
-            <GoTrashcan />
-          </Button>
-          {deletingUserError && <div>Error Deleting User!</div>}
-          {user.name}
-        </div>
-      </div>
-    );
+    return <UsersListItem key={user.id} user={user} />;
   });
 
   let content;
