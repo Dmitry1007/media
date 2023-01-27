@@ -1,5 +1,24 @@
 {
-  "users": [],
-  "albums": [],
+  "users": [
+    {
+      "name": "Angelo Weimann",
+      "id": 1
+    },
+    {
+      "name": "Terence Swift",
+      "id": 2
+    },
+    {
+      "name": "Abraham Nicolas",
+      "id": 3
+    }
+  ],
+  "albums": [
+    {
+      "id": 7,
+      "title": "Dancing in the rain",
+      "userId": 1
+    }
+  ],
   "photos": []
 }
