@@ -18,6 +18,11 @@
       "id": 7,
       "title": "Dancing in the rain",
       "userId": 1
+    },
+    {
+      "title": "Crazy Little Thing Called Love",
+      "userId": 2,
+      "id": 8
     }
   ],
   "photos": []
