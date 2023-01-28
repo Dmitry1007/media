@@ -43,6 +43,9 @@ function UsersList() {
         <Button loading={isCreatingUser} onClick={handleUserAdd}>
           + Add User
         </Button>
+        <button className="px-8 py-3 rounded-full bg-pink-500 text-white font-semibold shadow-xl shadow-pink-500/30">
+          Steeze
+        </button>
         {creatingUserError && "Error Creating User..."}
       </div>
       {content}

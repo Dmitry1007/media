@@ -13,7 +13,7 @@ export const store = configureStore({
   },
 });
 
-// view store in browser console
+// view store in browser console store.getState()
 window.store = store;
 
 setupListeners(store.dispatch);
