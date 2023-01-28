@@ -13,6 +13,9 @@ export const store = configureStore({
   },
 });
 
+// view store in browser console
+window.store = store;
+
 setupListeners(store.dispatch);
 
 export * from "./thunks/fetchUsers";

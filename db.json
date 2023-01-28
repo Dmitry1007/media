@@ -1,29 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Angelo Weimann",
-      "id": 1
-    },
-    {
-      "name": "Terence Swift",
-      "id": 2
-    },
-    {
-      "name": "Abraham Nicolas",
-      "id": 3
-    }
-  ],
-  "albums": [
-    {
-      "id": 7,
-      "title": "Dancing in the rain",
-      "userId": 1
-    },
-    {
-      "title": "Crazy Little Thing Called Love",
-      "userId": 2,
-      "id": 8
-    }
-  ],
+  "users": [],
+  "albums": [],
   "photos": []
 }
