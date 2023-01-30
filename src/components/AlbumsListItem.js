@@ -6,7 +6,7 @@ import ExpandablePanel from "./ExpandablePanel";
 function AlbumsListItem({ album }) {
   const [removeAlbum, removeAlbumResults] = useRemoveAlbumMutation();
 
-  const handleRemoveAlbum = (album) => {
+  const handleRemoveAlbum = () => {
     removeAlbum(album);
   };
 
@@ -15,7 +15,7 @@ function AlbumsListItem({ album }) {
       <Button
         className="mr-3"
         loading={removeAlbumResults.isLoading}
-        onClick={() => handleRemoveAlbum(album)}
+        onClick={handleRemoveAlbum}
       >
         <GoTrashcan />
       </Button>
