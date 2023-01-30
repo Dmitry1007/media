@@ -1,14 +1,24 @@
-import { useFetchAlbumsQuery, useAddAlbumMutation } from "../store";
+import { GoTrashcan } from "react-icons/go";
+import {
+  useFetchAlbumsQuery,
+  useAddAlbumMutation,
+  useRemoveAlbumMutation,
+} from "../store";
 import Skeleton from "./Skeleton";
 import ExpandablePanel from "./ExpandablePanel";
 import Button from "./Button";
 
 function AlbumsList({ user }) {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
-  const [addAlbum, results] = useAddAlbumMutation();
+  const [addAlbum, addAlbumResults] = useAddAlbumMutation();
+  const [removeAlbum, removeAlbumResults] = useRemoveAlbumMutation();
 
   const handleAddAlbum = () => {
     addAlbum(user);
+  };
+
+  const handleRemoveAlbum = (album) => {
+    removeAlbum(album);
   };
 
   let content;
@@ -18,7 +28,18 @@ function AlbumsList({ user }) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((album) => {
-      const header = <div>{album.title}</div>;
+      const header = (
+        <>
+          <Button
+            className="mr-3"
+            // loading={removeAlbumResults.isLoading}
+            onClick={() => handleRemoveAlbum(album)}
+          >
+            <GoTrashcan />
+          </Button>
+          {album.title}
+        </>
+      );
       return (
         <ExpandablePanel key={album.id} header={header}>
           List of Album Photos...
@@ -31,7 +52,7 @@ function AlbumsList({ user }) {
     <div>
       <div className="m-2 flex flex-row items-center justify-between">
         <h3 className="text-lg font-bold">Albums For: {user.name}</h3>
-        <Button loading={results.isLoading} onClick={handleAddAlbum}>
+        <Button loading={addAlbumResults.isLoading} onClick={handleAddAlbum}>
           + Add Album
         </Button>
       </div>
