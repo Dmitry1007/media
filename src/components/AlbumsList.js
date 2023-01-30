@@ -1,24 +1,14 @@
-import { GoTrashcan } from "react-icons/go";
-import {
-  useFetchAlbumsQuery,
-  useAddAlbumMutation,
-  useRemoveAlbumMutation,
-} from "../store";
+import { useFetchAlbumsQuery, useAddAlbumMutation } from "../store";
 import Skeleton from "./Skeleton";
-import ExpandablePanel from "./ExpandablePanel";
 import Button from "./Button";
+import AlbumsListItem from "./AlbumsListItem";
 
 function AlbumsList({ user }) {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
   const [addAlbum, addAlbumResults] = useAddAlbumMutation();
-  const [removeAlbum, removeAlbumResults] = useRemoveAlbumMutation();
 
   const handleAddAlbum = () => {
     addAlbum(user);
-  };
-
-  const handleRemoveAlbum = (album) => {
-    removeAlbum(album);
   };
 
   let content;
@@ -28,23 +18,7 @@ function AlbumsList({ user }) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((album) => {
-      const header = (
-        <>
-          <Button
-            className="mr-3"
-            // loading={removeAlbumResults.isLoading}
-            onClick={() => handleRemoveAlbum(album)}
-          >
-            <GoTrashcan />
-          </Button>
-          {album.title}
-        </>
-      );
-      return (
-        <ExpandablePanel key={album.id} header={header}>
-          List of Album Photos...
-        </ExpandablePanel>
-      );
+      return <AlbumsListItem key={album.id} album={album} />;
     });
   }
 
