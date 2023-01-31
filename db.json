@@ -1,32 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Fernando Howe Sr.",
-      "id": 1
-    }
-  ],
-  "albums": [
-    {
-      "title": "Living For the City",
-      "userId": 1,
-      "id": 1
-    }
-  ],
-  "photos": [
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=83753",
-      "id": 1
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=32822",
-      "id": 3
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=94046",
-      "id": 5
-    }
-  ]
+  "users": [],
+  "albums": [],
+  "photos": []
 }
