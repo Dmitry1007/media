@@ -1,5 +1,22 @@
 {
-  "users": [],
-  "albums": [],
-  "photos": []
+  "users": [
+    {
+      "name": "Fernando Howe Sr.",
+      "id": 1
+    }
+  ],
+  "albums": [
+    {
+      "title": "Living For the City",
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "photos": [
+    {
+      "id": 1,
+      "url": "https://img.freepik.com/premium-photo/realistic-portrait-scifi-neon-cyberpunk-girl-cyber-suit-hightech-futuristic-man_158863-78.jpg?w=826",
+      "albumId": 1
+    }
+  ]
 }
