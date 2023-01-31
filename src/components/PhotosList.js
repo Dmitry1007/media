@@ -1,14 +1,14 @@
-import { useFetchPhotosQuery } from "../store";
+import { useFetchPhotosQuery, useAddPhotoMutation } from "../store";
 import Button from "./Button";
 import Skeleton from "./Skeleton";
-// import PhotosListItem from "./PhotosListItem";
+import PhotosListItem from "./PhotosListItem";
 
 function PhotosList({ album }) {
   const { data, error, isFetching } = useFetchPhotosQuery(album);
-  console.log(data);
+  const [addPhoto, addPhotoResults] = useAddPhotoMutation();
 
   const handleAddPhoto = () => {
-    console.log("adding photo");
+    addPhoto(album);
   };
 
   let content;
@@ -18,15 +18,17 @@ function PhotosList({ album }) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((photo) => {
-      return <img key={photo.id} className="inline" src={photo.url} alt="" />;
+      return <PhotosListItem key={photo.id} url={photo.url} />;
     });
   }
 
   return (
     <div>
       <div className="m-2 flex flex-row items-center justify-between">
-        <h3 className="text-md font-bold">Photos in Album: {album.title}</h3>
-        <Button onClick={handleAddPhoto}>+ Add Photo</Button>
+        <h3 className="text-md font-bold">Photos In {album.title}</h3>
+        <Button loading={addPhotoResults.isLoading} onClick={handleAddPhoto}>
+          + Add Photo
+        </Button>
       </div>
       <div>{content}</div>
     </div>

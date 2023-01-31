@@ -1,5 +1,5 @@
-function PhotosListItem() {
-  return <div>Photo</div>;
+function PhotosListItem({ url }) {
+  return <img src={url} alt="" />;
 }
 
 export default PhotosListItem;
