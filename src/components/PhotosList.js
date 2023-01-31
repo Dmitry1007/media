@@ -13,12 +13,12 @@ function PhotosList({ album }) {
 
   let content;
   if (isFetching) {
-    content = <Skeleton times={3} className="h-10 w-full" />;
+    content = <Skeleton times={3} className="h-8 w-8" />;
   } else if (error) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((photo) => {
-      return <PhotosListItem key={photo.id} url={photo.url} />;
+      return <PhotosListItem key={photo.id} photo={photo} />;
     });
   }
 
