@@ -11,10 +11,9 @@ export const store = configureStore({
     [photosApi.reducerPath]: photosApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(
-      albumsApi.middleware,
-      photosApi.middleware
-    );
+    return getDefaultMiddleware()
+      .concat(albumsApi.middleware)
+      .concat(photosApi.middleware);
   },
 });
 
@@ -33,4 +32,8 @@ export {
   useRemoveAlbumMutation,
 } from "./apis/albumsApi";
 
-export { useFetchPhotosQuery } from "./apis/photosApi";
+export {
+  useFetchPhotosQuery,
+  useAddPhotoMutation,
+  useRemovePhotoMutation,
+} from "./apis/photosApi";

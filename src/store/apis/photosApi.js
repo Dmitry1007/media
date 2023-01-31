@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { faker } from "@faker-js/faker";
 // Development Only!
 import Pause from "../../helpers/pause";
 
@@ -24,9 +25,33 @@ const photosApi = createApi({
           };
         },
       }),
+      addPhoto: builder.mutation({
+        query: (album) => {
+          return {
+            url: "/photos",
+            method: "POST",
+            body: {
+              albumId: album.id,
+              url: faker.image.abstract(150, 150, true),
+            },
+          };
+        },
+      }),
+      removePhoto: builder.mutation({
+        query: (photo) => {
+          return {
+            url: `/photos/${photo.id}`,
+            method: "DELETE",
+          };
+        },
+      }),
     };
   },
 });
 
-export const { useFetchPhotosQuery } = photosApi;
+export const {
+  useFetchPhotosQuery,
+  useAddPhotoMutation,
+  useRemovePhotoMutation,
+} = photosApi;
 export { photosApi };
