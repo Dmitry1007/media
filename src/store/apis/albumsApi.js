@@ -19,7 +19,7 @@ const albumsApi = createApi({
           const tags = result.map((album) => {
             return { type: "Album", id: album.id };
           });
-          tags.push({ type: "UsersAlbums", id: user.id });
+          tags.push({ type: "UserAlbum", id: user.id });
           return tags;
         },
         query: (user) => {
@@ -34,7 +34,7 @@ const albumsApi = createApi({
       }),
       addAlbum: builder.mutation({
         invalidatesTags: (result, error, user) => {
-          return [{ type: "UsersAlbums", id: user.id }];
+          return [{ type: "UserAlbum", id: user.id }];
         },
         query: (user) => {
           return {
