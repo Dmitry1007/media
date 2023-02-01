@@ -34,7 +34,7 @@ const usersApi = createApi({
         },
         query: () => {
           return {
-            url: "/user",
+            url: "/users",
             method: "POST",
             body: {
               name: faker.name.firstName(),
