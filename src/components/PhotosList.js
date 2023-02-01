@@ -4,7 +4,7 @@ import Skeleton from "./Skeleton";
 import PhotosListItem from "./PhotosListItem";
 
 function PhotosList({ album }) {
-  const { data, error, isFetching } = useFetchPhotosQuery(album);
+  const { data, isError, isFetching } = useFetchPhotosQuery(album);
   const [addPhoto, addPhotoResults] = useAddPhotoMutation();
 
   const handleAddPhoto = () => {
@@ -14,7 +14,7 @@ function PhotosList({ album }) {
   let content;
   if (isFetching) {
     content = <Skeleton times={3} className="h-8 w-8" />;
-  } else if (error) {
+  } else if (isError) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((photo) => {

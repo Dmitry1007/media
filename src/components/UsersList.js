@@ -4,17 +4,18 @@ import Skeleton from "./Skeleton";
 import UsersListItem from "./UsersListItem";
 
 function UsersList() {
-  const { data, error, isFetching } = useFetchUsersQuery();
+  const { data, isError, isFetching, refetch } = useFetchUsersQuery();
   const [addUser, addUserResults] = useAddUserMutation();
 
-  const handleUserAdd = () => {
-    addUser();
+  const handleUserAdd = async () => {
+    await addUser();
+    await refetch();
   };
 
   let content;
   if (isFetching) {
     content = <Skeleton times={6} className="h-10 w-full" />;
-  } else if (error) {
+  } else if (isError) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((user) => {

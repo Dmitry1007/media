@@ -4,7 +4,7 @@ import Button from "./Button";
 import AlbumsListItem from "./AlbumsListItem";
 
 function AlbumsList({ user }) {
-  const { data, error, isFetching } = useFetchAlbumsQuery(user);
+  const { data, isError, isFetching } = useFetchAlbumsQuery(user);
   const [addAlbum, addAlbumResults] = useAddAlbumMutation();
 
   const handleAddAlbum = () => {
@@ -14,7 +14,7 @@ function AlbumsList({ user }) {
   let content;
   if (isFetching) {
     content = <Skeleton times={3} className="h-10 w-full" />;
-  } else if (error) {
+  } else if (isError) {
     content = <div>Error fetching data...</div>;
   } else {
     content = data.map((album) => {
