@@ -29,9 +29,6 @@ const usersApi = createApi({
         },
       }),
       addUser: builder.mutation({
-        invalidatesTags: (result, error, arg) => {
-          return [{ type: "User", id: result.id }];
-        },
         query: () => {
           return {
             url: "/users",
