@@ -8,19 +8,14 @@ const usersApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3005",
     fetchFn: async (...args) => {
-      await Pause(1000);
+      await Pause(500);
       return fetch(...args);
     },
   }),
   endpoints(builder) {
     return {
       fetchUsers: builder.query({
-        providesTags: (result, error, arg) => {
-          const tags = result.map((user) => {
-            return { type: "User", id: user.id };
-          });
-          return tags;
-        },
+        providesTags: ["User"],
         query: () => {
           return {
             url: "/users",
@@ -29,6 +24,7 @@ const usersApi = createApi({
         },
       }),
       addUser: builder.mutation({
+        invalidatesTags: ["User"],
         query: () => {
           return {
             url: "/users",
@@ -40,9 +36,7 @@ const usersApi = createApi({
         },
       }),
       removeUser: builder.mutation({
-        invalidatesTags: (result, error, user) => {
-          return [{ type: "User", id: user.id }];
-        },
+        invalidatesTags: ["User"],
         query: (user) => {
           return {
             url: `/users/${user.id}`,

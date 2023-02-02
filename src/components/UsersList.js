@@ -4,12 +4,11 @@ import Skeleton from "./Skeleton";
 import UsersListItem from "./UsersListItem";
 
 function UsersList() {
-  const { data, isError, isFetching, refetch } = useFetchUsersQuery();
+  const { data, isError, isFetching } = useFetchUsersQuery();
   const [addUser, addUserResults] = useAddUserMutation();
 
-  const handleUserAdd = async () => {
-    await addUser();
-    await refetch();
+  const handleUserAdd = () => {
+    addUser();
   };
 
   let content;
