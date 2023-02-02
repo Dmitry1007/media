@@ -15,7 +15,7 @@ function PhotosList({ album }) {
   if (isFetching) {
     content = <Skeleton times={3} className="h-8 w-8" />;
   } else if (isError) {
-    content = <div>Error fetching data...</div>;
+    content = <div>Network Error fetching data...</div>;
   } else {
     content = data.map((photo) => {
       return <PhotosListItem key={photo.id} photo={photo} />;

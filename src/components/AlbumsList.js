@@ -15,7 +15,7 @@ function AlbumsList({ user }) {
   if (isFetching) {
     content = <Skeleton times={3} className="h-10 w-full" />;
   } else if (isError) {
-    content = <div>Error fetching data...</div>;
+    content = <div>Network Error fetching data...</div>;
   } else {
     content = data.map((album) => {
       return <AlbumsListItem key={album.id} album={album} />;
