@@ -12,6 +12,7 @@ function UsersList() {
     isError,
     error,
     isSuccess,
+    // refetch,
   } = useFetchUsersQuery();
   const [addUser, addUserResults] = useAddUserMutation();
 
