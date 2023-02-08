@@ -1,6 +1,6 @@
 import { useFetchAlbumsQuery, useAddAlbumMutation } from "../store";
-import Skeleton from "./Skeleton";
 import Button from "./Button";
+import Skeleton from "./Skeleton";
 import AlbumsListItem from "./AlbumsListItem";
 
 function AlbumsList({ user }) {

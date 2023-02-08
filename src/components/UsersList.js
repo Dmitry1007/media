@@ -4,7 +4,8 @@ import Skeleton from "./Skeleton";
 import UsersListItem from "./UsersListItem";
 
 function UsersList() {
-  const { data, isError, isFetching } = useFetchUsersQuery();
+  const { data, isLoading, isFetching, isError, error, isSuccess } =
+    useFetchUsersQuery();
   const [addUser, addUserResults] = useAddUserMutation();
 
   const handleUserAdd = () => {
@@ -12,11 +13,13 @@ function UsersList() {
   };
 
   let content;
-  if (isFetching) {
+  if (isLoading) {
+    console.log("Making first Request to the Server");
+  } else if (isFetching) {
     content = <Skeleton times={6} className="h-10 w-full" />;
   } else if (isError) {
-    content = <div>Network Error fetching data...</div>;
-  } else {
+    content = <div>Network Error fetching data... {error}</div>;
+  } else if (isSuccess) {
     content = data.map((user) => {
       return <UsersListItem key={user.id} user={user} />;
     });
