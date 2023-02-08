@@ -1,5 +1,22 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Lamont",
+      "id": 1
+    },
+    {
+      "name": "Remington",
+      "id": 3
+    },
+    {
+      "name": "Vada",
+      "id": 4
+    },
+    {
+      "name": "General",
+      "id": 5
+    }
+  ],
   "albums": [],
   "photos": []
 }

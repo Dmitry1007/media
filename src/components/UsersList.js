@@ -1,16 +1,30 @@
+import { useMemo } from "react";
 import { useFetchUsersQuery, useAddUserMutation } from "../store";
 import Button from "./Button";
 import Skeleton from "./Skeleton";
 import UsersListItem from "./UsersListItem";
 
 function UsersList() {
-  const { data, isLoading, isFetching, isError, error, isSuccess } =
-    useFetchUsersQuery();
+  const {
+    data: users = [],
+    isLoading,
+    isFetching,
+    isError,
+    error,
+    isSuccess,
+  } = useFetchUsersQuery();
   const [addUser, addUserResults] = useAddUserMutation();
 
   const handleUserAdd = () => {
     addUser();
   };
+
+  const sortedUsers = useMemo(() => {
+    const sortedUsers = users.slice();
+    // Sort users in descending chronological order
+    sortedUsers.sort((a, b) => a.name.localeCompare(b.name));
+    return sortedUsers;
+  }, [users]);
 
   let content;
   if (isLoading) {
@@ -20,7 +34,7 @@ function UsersList() {
   } else if (isError) {
     content = <div>Network Error fetching data... {error}</div>;
   } else if (isSuccess) {
-    content = data.map((user) => {
+    content = sortedUsers.map((user) => {
       return <UsersListItem key={user.id} user={user} />;
     });
   }
